@@ -1,0 +1,14 @@
+{
+  "checks": {
+    "check_HTTP_uchiwa": {
+      "command": "check-http.rb -u http://uchiwa:3000",
+      "handlers": [
+        "default"
+      ],
+      "subscribers": [
+        "default"
+      ],
+      "interval": 60
+    }
+  }
+}

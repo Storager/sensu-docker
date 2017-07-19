@@ -47,6 +47,9 @@ services:
       TRANSPORT_NAME: redis
       REDIS_HOST: redis
       REDIS_PORT: "6379"
+      CHECK_DIR: "/etc/sensu/check.d"
+    volumes:
+      - "sensu_checks:/etc/sensu/check.d"
   
   client:
     container_name: client
@@ -64,3 +67,5 @@ services:
       - "CLIENT_DEREGISTER=true"
       - "CLIENT_NAME=sensu-client"
       - "CLIENT_ADDRESS=client"
+volumes:
+  sensu_checks:

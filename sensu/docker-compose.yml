@@ -18,3 +18,20 @@ services:
       TRANSPORT_NAME: redis
       REDIS_HOST: redis
       REDIS_PORT: "6379"
+  uchiwa:
+    container_name: uchiwa
+    restart: always
+    image: sstarcher/uchiwa:0.25.2
+    depends_on:
+      - redis
+      - api
+    environment:
+      UCHIWA_BIND: "0.0.0.0"
+      UCHIWA_SERVICE_PORT: "3000"
+      UCHIWA_REFRESH: "10"
+      UCHIWA_LOG_LEVEL: "info"
+      SENSU_DC_NAME: DC1
+      SENSU_HOSTNAME: api
+      SENSU_SERVICE_PORT: "4567"
+    ports:
+      - "80:3000"

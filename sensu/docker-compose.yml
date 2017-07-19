@@ -1,0 +1,8 @@
+---
+version: "3.0"
+
+services:
+  redis:
+    container_name: redis
+    restart: always
+    image: redis:3

@@ -18,6 +18,7 @@ services:
       TRANSPORT_NAME: redis
       REDIS_HOST: redis
       REDIS_PORT: "6379"
+  
   uchiwa:
     container_name: uchiwa
     restart: always
@@ -35,3 +36,14 @@ services:
       SENSU_SERVICE_PORT: "4567"
     ports:
       - "80:3000"
+  server:
+    container_name: server
+    restart: always
+    image: sstarcher/sensu:1.0.0
+    command: server
+    depends_on:
+      - redis
+    environment:
+      TRANSPORT_NAME: redis
+      REDIS_HOST: redis
+      REDIS_PORT: "6379"

@@ -6,3 +6,15 @@ services:
     container_name: redis
     restart: always
     image: redis:3
+
+  api:
+    container_name: api
+    restart: always
+    image: sstarcher/sensu:1.0.0
+    command: api
+    depends_on:
+      - redis
+    environment:
+      TRANSPORT_NAME: redis
+      REDIS_HOST: redis
+      REDIS_PORT: "6379"
